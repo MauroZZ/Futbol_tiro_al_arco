@@ -16,9 +16,38 @@ Este proyecto es un minijuego desarrollado en Unity como parte del curso de **De
 - Antes de disparar, el jugador puede mover la cámara horizontalmente con el mouse para apuntar.
 - Al iniciar el juego, la cámara se posiciona automáticamente mirando hacia el arco.
 
-### 💥 Mecánica de disparo
-- El disparo se activa con la tecla **Espacio**.
-- La fuerza del disparo se calcula en base al tiempo de presión de la tecla (hasta 3 segundos).
+---
+
+## 🧩 Menú interactivo (UI)
+
+Se implementó un menú principal y una pantalla de opciones utilizando el sistema de **UI de Unity**, accesibles al iniciar el juego.
+
+### 🎮 Menú Principal
+- Campo para ingresar el nombre del jugador (`InputField`).
+- Botón para iniciar el juego.
+- Botón para abrir el menú de opciones.
+
+### ⚙️ Pantalla de Opciones
+- Texto explicativo sobre la usabilidad y objetivo del juego.
+- `Toggle` para activar la dificultad:
+  - **Desactivado** (por defecto): la portería permanece estática.
+  - **Activado**: la portería se mueve de un lado a otro, aumentando la dificultad.
+- `Slider` para controlar el volumen de la música ambiental del menú.
+- Botón para volver al menú principal.
+
+---
+
+## 🔊 Música ambiental
+- Se agregó una pista de música de fondo en el menú.
+- El `Slider` permite ajustar el volumen desde el 0% hasta el 100%.
+- Al iniciar el menú, el volumen comienza en **10%** por defecto para evitar un sonido abrupto.
+
+---
+
+## 🧠 Dificultad y movimiento del arco
+- El `Toggle` en el menú controla la variable `modoDificil`.
+- Esta variable es utilizada en la escena de juego para determinar si el arco debe moverse.
+- En modo difícil (`Toggle` activado), el arco se mueve automáticamente en el eje Z de forma oscilante usando `Mathf.Sin()`.
 
 ---
 
