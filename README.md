@@ -58,6 +58,14 @@ Se implementó un menú principal y una pantalla de opciones utilizando el siste
 
 ---
 
+## 🏆 Pantalla de victoria al ganar
+- Cuando el jugador anota 3 goles, aparece un **panel de victoria** que indica que ha ganado la partida.
+- El panel incluye un mensaje personalizado con el nombre del jugador que fue ingresado previamente en el menú.
+- Este mensaje se actualiza dinámicamente con la variable `MenuManager.nombreJugador`.
+- Además, se habilita un botón para **volver al menú principal**, utilizando `SceneManager.LoadScene("Menu")`.
+
+---
+
 ## 👨‍💻 Desarrolladores
 
 - Mauro  
