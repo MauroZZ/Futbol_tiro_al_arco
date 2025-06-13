@@ -66,4 +66,25 @@ public class ControlPelota : MonoBehaviour
             Cursor.visible = true;
         }
     }
+    public void ReiniciarPelota()
+    {
+        tiempoCarga = 0f;
+        disparada = false;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        transform.position = new Vector3(0f, 0.5f, 0f);
+
+        Vector3 direccionAlArco = arco.position - transform.position;
+        direccionAlArco.y = 0f;
+        Quaternion rotacionInicial = Quaternion.LookRotation(direccionAlArco);
+        rotY = rotacionInicial.eulerAngles.y;
+
+        camara.rotation = Quaternion.Euler(10f, rotY, 0f);
+        camara.position = transform.position + Quaternion.Euler(0f, rotY, 0f) * new Vector3(0f, 1.5f, -10f);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
 }

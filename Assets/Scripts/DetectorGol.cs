@@ -1,26 +1,32 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectorGol : MonoBehaviour
 {
-    public int goles = 0;
-    public GameObject panelVictoria;
-    public TMPro.TextMeshProUGUI textoJugador;
+    public int golesRequeridos = 3;
+    private int goles = 0;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pelota"))
         {
             goles++;
-            if (goles >= 3)
+            Debug.Log("¡GOL! Total: " + goles);
+
+            if (goles >= golesRequeridos)
             {
-                panelVictoria.SetActive(true);
-                // Mostrar nombre jugador si est� en PlayerPrefs
-                if (PlayerPrefs.HasKey("NombreJugador"))
-                    textoJugador.text = "�Ganaste, " + PlayerPrefs.GetString("NombreJugador") + "!";
+                Debug.Log("🎉 ¡GANASTE! Has anotado 3 goles.");
+                // Aquí puedes activar partículas, sonidos, UI final, etc.
+            }
+
+            // Opcional: reiniciar la pelota
+            ControlPelota controlPelota = other.GetComponent<ControlPelota>();
+            if (controlPelota != null)
+            {
+                controlPelota.ReiniciarPelota();
             }
         }
+
     }
 }
-

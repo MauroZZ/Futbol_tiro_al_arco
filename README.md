@@ -51,6 +51,13 @@ Se implementó un menú principal y una pantalla de opciones utilizando el siste
 
 ---
 
+## 🥅 Detección de goles
+- Se implementó la detección de goles utilizando un **panel invisible con Collider y Trigger** ubicado dentro de la portería.
+- Al entrar la pelota (con tag `Pelota`) al área de gol, se imprime un mensaje de confirmación en la consola (`Debug.Log("¡GOL!")`).
+- Todo el sistema de detección de gol está gestionado desde un script exclusivo (`DetectorGol.cs`).
+
+---
+
 ## 👨‍💻 Desarrolladores
 
 - Mauro  
