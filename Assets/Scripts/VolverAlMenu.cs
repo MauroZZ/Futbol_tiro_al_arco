@@ -5,6 +5,6 @@ public class VolverAlMenu : MonoBehaviour
 {
     public void IrAlMenu()
     {
-        SceneManager.LoadScene("MenuPrincipal"); // Nombre exacto de tu escena del menú
+        SceneManager.LoadScene("MenuPrincipal"); // Asegúrate que ese sea el nombre exacto de tu escena
     }
 }

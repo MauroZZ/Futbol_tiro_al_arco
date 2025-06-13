@@ -16,56 +16,65 @@ public class ControlPelota : MonoBehaviour
     private float rotY = 0f;
     public Transform arco;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip sonidoDisparo;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ParedTrasera"))
+        {
+            ReiniciarPelota();
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Calcula la dirección horizontal desde la pelota hacia el arco
         Vector3 direccionAlArco = arco.position - transform.position;
-        direccionAlArco.y = 0f; // ignorar diferencia en altura
+        direccionAlArco.y = 0f;
 
-        // Convertimos esa dirección en un ángulo de rotación Y
         Quaternion rotacionInicial = Quaternion.LookRotation(direccionAlArco);
         rotY = rotacionInicial.eulerAngles.y;
 
-        // Aplicamos rotación y posición inicial a la cámara
         camara.rotation = Quaternion.Euler(10f, rotY, 0f);
         camara.position = transform.position + Quaternion.Euler(0f, rotY, 0f) * new Vector3(0f, 1.5f, -10f);
     }
-
 
     void Update()
     {
         if (!disparada)
         {
-            // Rotación solo horizontal (izquierda/derecha)
             float mouseX = Input.GetAxis("Mouse X") * sensibilidad * Time.deltaTime;
             rotY += mouseX;
 
-            camara.rotation = Quaternion.Euler(10f, rotY, 0f);  // fija inclinación vertical
+            camara.rotation = Quaternion.Euler(10f, rotY, 0f);
             camara.position = transform.position + Quaternion.Euler(0f, rotY, 0f) * new Vector3(0f, 1.5f, -10f);
         }
 
-        // Carga de fuerza
         if (Input.GetKey(KeyCode.Space) && !disparada)
         {
             tiempoCarga += Time.deltaTime;
             tiempoCarga = Mathf.Clamp(tiempoCarga, 0f, tiempoMaxCarga);
         }
 
-        // Disparo
         if (Input.GetKeyUp(KeyCode.Space) && !disparada)
         {
             float fuerza = Mathf.Lerp(fuerzaMin, fuerzaMax, tiempoCarga / tiempoMaxCarga);
             rb.AddForce(camara.forward * fuerza, ForceMode.Impulse);
             disparada = true;
 
+            // Reproducir sonido de disparo
+            if (audioSource != null && sonidoDisparo != null)
+                audioSource.PlayOneShot(sonidoDisparo);
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
     }
+
     public void ReiniciarPelota()
     {
         tiempoCarga = 0f;
@@ -86,6 +95,4 @@ public class ControlPelota : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
-
 }
