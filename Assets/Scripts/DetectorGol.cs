@@ -73,4 +73,14 @@ public class DetectorGol : MonoBehaviour
         if (controlPelota != null)
             controlPelota.ReiniciarPelota();
     }
+
+    public void DescontarGol()
+    {
+        if (goles > 0)
+        {
+            goles--;
+            ActualizarContadorGoles();
+            Debug.Log("Gol descontado. Total: " + goles);
+        }
+    }
 }

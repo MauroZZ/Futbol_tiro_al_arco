@@ -58,8 +58,19 @@ Se implementó un menú principal y una pantalla de opciones utilizando el siste
 - Cuando el jugador anota 3 goles, aparece un panel de victoria que indica que ha ganado la partida.
 - El panel incluye un mensaje personalizado con el nombre del jugador ingresado previamente en el menú.
 - Este mensaje se actualiza dinámicamente con la variable `MenuManager.nombreJugador`.
-- Se activa un botón para **volver al menú principal** utilizando `SceneManager.LoadScene("Menu")`.
+- Se activa un botón para **volver al menú principal** utilizando `SceneManager.LoadScene("MenuPrincipal")`.
+- También se incluye un botón para **reintentar el juego**, recargando la escena actual.
+- La música del menú se detiene correctamente si se vuelve desde esta pantalla para evitar que se superponga.
 
+### ❌ Detección de fallos al tocar las paredes
+- Se agregaron `BoxCollider` con `isTrigger` a las paredes laterales.
+- Si la pelota (con tag `Pelota`) toca una de las paredes, se considera un fallo y se **descuenta un punto**.
+- Se imprime un mensaje en consola indicando el fallo (`Debug.Log("Fallaste!")`) y se reinicia la pelota.
+
+### 🖼️ Imagen de fondo en UI
+- Se agregó una imagen de fondo en el Canvas del menú principal y la pantalla de victoria.
+- La imagen se extiende automáticamente para cubrir toda la pantalla mediante configuración del `RectTransform`.
+- El fondo se ubica detrás de todos los elementos UI para mejorar la presentación visual del menú.
 ---
 
 ## 👨‍💻 Desarrolladores
