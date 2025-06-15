@@ -1,7 +1,7 @@
 # 🎮 Trabajo 3 - Minijuego de Fútbol: Tiro al Arco
 
 > **Ubicación del juego compilado:**  
-> El juego está disponible en la carpeta `Assets/JuegoComprimido` dentro del proyecto Unity, listo para ser ejecutado o comprimido.
+> El juego está disponible en la carpeta `JuegoComprimido` dentro del proyecto Unity, listo para ser ejecutado o comprimido.
 
 ---
 
