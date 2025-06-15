@@ -46,16 +46,14 @@ public class ControlPelota : MonoBehaviour
 
     void Update()
     {
+
+        // boton ESC  para volver al menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // 1️⃣ Liberar el cursor para poder usar la UI del menú
+            // Liberar el cursor para poder usar la UI del menú
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
-            // 2️⃣ (opcional) Asegura que el tiempo esté corriendo por si luego pausas con Time.timeScale
             Time.timeScale = 1f;
-
-            // 3️⃣ Cargar el menú
             SceneManager.LoadScene("MenuPrincipal");
         }
 
