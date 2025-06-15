@@ -1,6 +1,7 @@
 # 🎮 Trabajo 3 - Minijuego de Fútbol: Tiro al Arco
 
-Este proyecto es un minijuego desarrollado en Unity como parte del curso de Desarrollo de Videojuegos, con el objetivo de simular tiros al arco en un entorno 3D.
+> **Ubicación del juego compilado:**  
+> El juego está disponible en la carpeta `Assets/JuegoComprimido` dentro del proyecto Unity, listo para ser ejecutado o comprimido.
 
 ---
 
@@ -71,6 +72,7 @@ Se implementó un menú principal y una pantalla de opciones utilizando el siste
 - Se agregó una imagen de fondo en el Canvas del menú principal y la pantalla de victoria.
 - La imagen se extiende automáticamente para cubrir toda la pantalla mediante configuración del `RectTransform`.
 - El fondo se ubica detrás de todos los elementos UI para mejorar la presentación visual del menú.
+
 ---
 
 ## 👨‍💻 Desarrolladores

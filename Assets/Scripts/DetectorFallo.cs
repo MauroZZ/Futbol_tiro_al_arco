@@ -1,5 +1,7 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 public class DetectorFallo : MonoBehaviour
 {
     public DetectorGol detectorGol; // Referencia al script que lleva el conteo de goles
@@ -11,13 +13,18 @@ public class DetectorFallo : MonoBehaviour
             Debug.Log("¡Fallaste! Tocaste la pared.");
             if (detectorGol != null)
             {
-                detectorGol.DescontarGol(); // Llama a un nuevo método que restará el gol
+                Debug.Log("Llamando a DescontarGol");
+                detectorGol.DescontarGol();
+            }
+            else
+            {
+                Debug.LogWarning("DetectorGol no asignado en DetectorFallo");
             }
 
-            // Reiniciar la pelota
             ControlPelota controlPelota = other.GetComponent<ControlPelota>();
             if (controlPelota != null)
                 controlPelota.ReiniciarPelota();
         }
     }
+
 }

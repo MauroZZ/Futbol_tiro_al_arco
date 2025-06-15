@@ -65,4 +65,15 @@ public class MenuManager : MonoBehaviour
         musicaFondo.volume = sliderVolumen.value;
         volumenMusica = sliderVolumen.value;
     }
+    public void CerrarJuego()
+    {
+        Debug.Log("Saliendo del juego...");
+        Application.Quit();
+
+        // Para que también funcione en el Editor (porque allí no se cierra)
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
 }

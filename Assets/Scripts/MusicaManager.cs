@@ -25,4 +25,16 @@ public class MusicaManager : MonoBehaviour
         if (musicaFondo != null)
             musicaFondo.volume = volumen;
     }
+
+    public void DetenerMusica()
+    {
+        if (musicaFondo != null && musicaFondo.isPlaying)
+            musicaFondo.Stop();
+    }
+
+    public void DestruirMusica()
+    {
+        Destroy(gameObject);
+        instance = null;
+    }
 }

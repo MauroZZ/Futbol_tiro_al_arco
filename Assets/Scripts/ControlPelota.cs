@@ -1,11 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlPelota : MonoBehaviour
 {
     public float fuerzaMin = 5f;
-    public float fuerzaMax = 20f;
+    public float fuerzaMax = 100f;
     public float tiempoMaxCarga = 3f;
     public float sensibilidad = 100f;
     public Transform camara;
@@ -45,6 +46,19 @@ public class ControlPelota : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // 1️⃣ Liberar el cursor para poder usar la UI del menú
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // 2️⃣ (opcional) Asegura que el tiempo esté corriendo por si luego pausas con Time.timeScale
+            Time.timeScale = 1f;
+
+            // 3️⃣ Cargar el menú
+            SceneManager.LoadScene("MenuPrincipal");
+        }
+
         if (!disparada)
         {
             float mouseX = Input.GetAxis("Mouse X") * sensibilidad * Time.deltaTime;

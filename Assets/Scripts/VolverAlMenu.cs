@@ -5,11 +5,10 @@ public class VolverAlMenu : MonoBehaviour
 {
     public void IrAlMenu()
     {
-        // Detener y destruir la música persistente si existe
-        if (MusicaManager.instance != null && MusicaManager.instance.musicaFondo != null)
+        if (MusicaManager.instance != null)
         {
-            MusicaManager.instance.musicaFondo.Stop();
-            Destroy(MusicaManager.instance.gameObject);
+            MusicaManager.instance.DetenerMusica();
+            MusicaManager.instance.DestruirMusica();
         }
 
         SceneManager.LoadScene("MenuPrincipal");
